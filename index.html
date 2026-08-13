@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  />
+  >
 
   <meta
     name="description"
     content="Angela's Eats — a local food business built on homemade recipes, big flavor, quality ingredients, and food made with love."
-  />
+  >
 
-  <meta name="theme-color" content="#062f4f" />
+  <meta name="theme-color" content="#082f50">
 
   <title>Angela's Eats | Good Food Made With Love</title>
 
   <style>
-    /* =========================================================
-       ANGELA'S EATS
-       OFFICIAL WEBSITE
-       Retro Flyer-Inspired Brand Shell
-       ========================================================= */
-
     :root {
       --navy: #082f50;
       --navy-dark: #041f36;
@@ -54,11 +48,6 @@
       --max-width: 1180px;
     }
 
-
-    /* =========================================================
-       RESET
-       ========================================================= */
-
     * {
       box-sizing: border-box;
     }
@@ -79,6 +68,8 @@
 
       background:
         var(--cream);
+
+      line-height: 1.6;
     }
 
     a {
@@ -91,10 +82,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    img {
-      max-width: 100%;
-    }
-
     .container {
       width:
         min(var(--max-width), 92%);
@@ -103,10 +90,9 @@
         0 auto;
     }
 
-
-    /* =========================================================
+    /* ========================================
        TOP STRIP
-       ========================================================= */
+    ======================================== */
 
     .top-strip {
       background:
@@ -131,10 +117,9 @@
         0.3px;
     }
 
-
-    /* =========================================================
+    /* ========================================
        HEADER / NAVIGATION
-       ========================================================= */
+    ======================================== */
 
     header {
       position:
@@ -150,6 +135,9 @@
         rgba(255, 245, 215, 0.96);
 
       backdrop-filter:
+        blur(10px);
+
+      -webkit-backdrop-filter:
         blur(10px);
 
       border-bottom:
@@ -309,10 +297,39 @@
         translateY(-2px);
     }
 
+    /* ========================================
+       MOBILE MENU
+    ======================================== */
 
-    /* =========================================================
+    .menu-toggle {
+      display:
+        none;
+
+      background:
+        var(--navy);
+
+      color:
+        var(--white);
+
+      border:
+        0;
+
+      border-radius:
+        10px;
+
+      padding:
+        10px 12px;
+
+      font-size:
+        1.25rem;
+
+      cursor:
+        pointer;
+    }
+
+    /* ========================================
        HERO
-       ========================================================= */
+    ======================================== */
 
     .hero {
       position:
@@ -334,8 +351,7 @@
           transparent 34%
         ),
         repeating-conic-gradient(
-          from -6deg
-          at 50% 12%,
+          from -6deg at 50% 12%,
           rgba(245,177,27,0.13)
           0deg 8deg,
           transparent
@@ -393,8 +409,7 @@
         #f24c20;
 
       -webkit-text-stroke:
-        2px
-        var(--white);
+        2px var(--white);
 
       text-shadow:
         4px 4px 0
@@ -555,10 +570,9 @@
         rgba(8, 47, 80, 0.15);
     }
 
-
-    /* =========================================================
+    /* ========================================
        DECORATIVE SYMBOLS
-       ========================================================= */
+    ======================================== */
 
     .decor {
       position:
@@ -639,10 +653,9 @@
         3.8rem;
     }
 
-
-    /* =========================================================
+    /* ========================================
        STORY SECTION
-       ========================================================= */
+    ======================================== */
 
     .story-section {
       position:
@@ -722,11 +735,6 @@
 
       align-items:
         start;
-    }
-
-    .story-block {
-      position:
-        relative;
     }
 
     .section-heading {
@@ -819,10 +827,9 @@
         900;
     }
 
-
-    /* =========================================================
+    /* ========================================
        VALUES
-       ========================================================= */
+    ======================================== */
 
     .values-list {
       display:
@@ -916,10 +923,9 @@
         1.55;
     }
 
-
-    /* =========================================================
+    /* ========================================
        ANGELA BIO
-       ========================================================= */
+    ======================================== */
 
     .bio-section {
       padding:
@@ -1089,14 +1095,13 @@
         999px;
     }
 
-
-    /* =========================================================
-       MENU PREVIEW
-       ========================================================= */
+    /* ========================================
+       CURRENT MENU LINK SECTION
+    ======================================== */
 
     .menu-section {
       padding:
-        66px 0 78px;
+        68px 0 82px;
 
       background:
         linear-gradient(
@@ -1111,7 +1116,7 @@
         center;
 
       margin-bottom:
-        35px;
+        36px;
     }
 
     .menu-heading h2 {
@@ -1135,13 +1140,16 @@
 
     .menu-heading p {
       max-width:
-        620px;
+        680px;
 
       margin:
-        12px auto 0;
+        14px auto 0;
 
       line-height:
-        1.6;
+        1.65;
+
+      font-size:
+        1.05rem;
     }
 
     .menu-card {
@@ -1152,7 +1160,7 @@
         0 auto;
 
       background:
-        rgba(255,255,255,0.54);
+        rgba(255,255,255,0.56);
 
       border:
         4px solid
@@ -1162,7 +1170,7 @@
         26px;
 
       padding:
-        34px;
+        40px 30px;
 
       text-align:
         center;
@@ -1172,28 +1180,9 @@
         var(--gold);
     }
 
-    .menu-price {
-      color:
-        var(--red);
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(3.5rem, 7vw, 5.5rem);
-
-      font-weight:
-        900;
-
-      line-height:
-        1;
-    }
-
     .menu-card h3 {
       margin:
-        12px 0 8px;
+        0 0 12px;
 
       font-family:
         Georgia,
@@ -1204,254 +1193,179 @@
         italic;
 
       font-size:
-        2rem;
+        clamp(2rem, 5vw, 3rem);
+
+      color:
+        var(--navy);
     }
 
     .menu-card p {
-      margin:
-        4px 0;
+      max-width:
+        620px;
 
-      font-weight:
-        700;
+      margin:
+        0 auto;
+
+      font-size:
+        1.06rem;
+
+      line-height:
+        1.65;
     }
 
-    .included {
-      display:
-        inline-block;
-
+    .menu-card .button {
       margin-top:
-        15px;
+        28px;
+    }
 
+    .menu-note {
+      margin-top:
+        20px;
+
+      color:
+        var(--teal-dark);
+
+      font-weight:
+        900;
+
+      font-style:
+        italic;
+    }
+
+    /* ========================================
+       CONTACT SECTION
+    ======================================== */
+
+    .contact-section {
       background:
-        var(--teal);
+        var(--navy);
 
       color:
         var(--white);
 
       padding:
-        8px 16px;
+        70px 20px;
 
-      border-radius:
-        999px;
-
-      font-size:
-        0.9rem;
-
-      font-weight:
-        900;
+      text-align:
+        center;
     }
 
+    .contact-inner {
+      width:
+        min(820px, 92%);
 
-    /* =========================================================
-       BOTTOM RETRO WAVES
-       ========================================================= */
+      margin:
+        0 auto;
+    }
 
-    .bottom-art {
-      position:
-        relative;
+    .contact-section h2 {
+      margin:
+        0 0 12px;
 
-      overflow:
-        hidden;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-      min-height:
-        250px;
+      font-style:
+        italic;
 
-      background:
-        var(--cream);
+      color:
+        var(--gold);
 
+      font-size:
+        clamp(2.3rem, 5vw, 3.6rem);
+    }
+
+    .contact-section p {
+      max-width:
+        640px;
+
+      margin:
+        0 auto;
+
+      line-height:
+        1.65;
+
+      font-size:
+        1.08rem;
+    }
+
+    .contact-actions {
       display:
         flex;
 
-      align-items:
-        flex-end;
+      flex-wrap:
+        wrap;
 
       justify-content:
         center;
 
-      padding-bottom:
+      gap:
+        14px;
+
+      margin-top:
         30px;
     }
 
-    .wave-orange {
-      position:
-        absolute;
+    .contact-action {
+      display:
+        inline-flex;
 
-      left:
-        -12%;
-
-      right:
-        -12%;
-
-      bottom:
-        -155px;
-
-      height:
-        300px;
-
-      border-radius:
-        50% 50% 0 0;
-
-      background:
-        var(--orange);
-    }
-
-    .wave-gold {
-      position:
-        absolute;
-
-      left:
-        -7%;
-
-      right:
-        -7%;
-
-      bottom:
-        -185px;
-
-      height:
-        280px;
-
-      border-radius:
-        50% 50% 0 0;
-
-      background:
-        var(--gold);
-    }
-
-    .wave-teal {
-      position:
-        absolute;
-
-      left:
-        -3%;
-
-      right:
-        -3%;
-
-      bottom:
-        -215px;
-
-      height:
-        280px;
-
-      border-radius:
-        50% 50% 0 0;
-
-      background:
-        var(--teal);
-    }
-
-    .wave-navy {
-      position:
-        absolute;
-
-      left:
-        0;
-
-      right:
-        0;
-
-      bottom:
-        -245px;
-
-      height:
-        290px;
-
-      border-radius:
-        50% 50% 0 0;
-
-      background:
-        var(--navy);
-    }
-
-
-    /* =========================================================
-       FINAL CTA
-       ========================================================= */
-
-    .cta-wrap {
-      position:
-        relative;
-
-      z-index:
-        10;
-
-      text-align:
+      align-items:
         center;
 
-      margin-bottom:
-        30px;
+      justify-content:
+        center;
+
+      min-height:
+        52px;
+
+      padding:
+        0 22px;
+
+      border-radius:
+        999px;
+
+      background:
+        var(--white);
+
+      color:
+        var(--navy);
+
+      font-weight:
+        900;
     }
 
-    .cta-ribbon {
-      display:
-        inline-block;
-
+    .contact-action.primary {
       background:
         var(--red);
 
       color:
         var(--white);
-
-      padding:
-        12px 42px;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-style:
-        italic;
-
-      font-size:
-        clamp(1.5rem, 4vw, 2rem);
-
-      font-weight:
-        900;
-
-      box-shadow:
-        5px 5px 0
-        rgba(8,47,80,0.15);
-
-      transform:
-        rotate(-1deg);
     }
 
-    .cta-button {
-      display:
-        block;
+    /* ========================================
+       RETRO BOTTOM ART
+    ======================================== */
 
-      width:
-        fit-content;
-
-      margin:
-        18px auto 0;
+    .bottom-art {
+      height:
+        150px;
 
       background:
-        var(--navy);
-
-      color:
-        var(--white);
-
-      padding:
-        15px 32px;
-
-      border-radius:
-        999px;
-
-      font-weight:
-        900;
-
-      box-shadow:
-        0 7px 0
-        rgba(8,47,80,0.16);
+        linear-gradient(
+          165deg,
+          var(--orange) 0% 24%,
+          var(--gold) 24% 43%,
+          var(--teal) 43% 68%,
+          var(--navy) 68% 100%
+        );
     }
 
-
-    /* =========================================================
+    /* ========================================
        FOOTER
-       ========================================================= */
+    ======================================== */
 
     footer {
       background:
@@ -1464,7 +1378,7 @@
         center;
 
       padding:
-        26px 20px;
+        28px 20px;
 
       font-size:
         0.92rem;
@@ -1475,50 +1389,26 @@
         block;
 
       margin-bottom:
-        4px;
+        5px;
 
       color:
         var(--white);
 
       font-size:
-        1.1rem;
+        1.15rem;
     }
 
-
-    /* =========================================================
-       MOBILE MENU BUTTON
-       ========================================================= */
-
-    .menu-toggle {
-      display:
-        none;
-
-      background:
-        var(--navy);
-
+    footer a {
       color:
-        var(--white);
+        var(--gold-light);
 
-      border:
-        0;
-
-      border-radius:
-        10px;
-
-      padding:
-        10px 12px;
-
-      font-size:
-        1.25rem;
-
-      cursor:
-        pointer;
+      font-weight:
+        800;
     }
 
-
-    /* =========================================================
+    /* ========================================
        RESPONSIVE
-       ========================================================= */
+    ======================================== */
 
     @media
     (max-width: 900px) {
@@ -1541,13 +1431,7 @@
         letter-spacing:
           -3px;
       }
-
-      .decor {
-        opacity:
-          0.75;
-      }
     }
-
 
     @media
     (max-width: 760px) {
@@ -1636,10 +1520,8 @@
           1px var(--white);
 
         text-shadow:
-          3px 3px 0
-          var(--gold),
-          6px 6px 0
-          var(--navy);
+          3px 3px 0 var(--gold),
+          6px 6px 0 var(--navy);
       }
 
       .decor {
@@ -1661,13 +1543,7 @@
         padding:
           20px 10px 40px;
       }
-
-      .bottom-art {
-        min-height:
-          220px;
-      }
     }
-
 
     @media
     (max-width: 480px) {
@@ -1687,7 +1563,8 @@
           1.55rem;
       }
 
-      .hero-actions {
+      .hero-actions,
+      .contact-actions {
         flex-direction:
           column;
 
@@ -1695,7 +1572,8 @@
           stretch;
       }
 
-      .button {
+      .button,
+      .contact-action {
         width:
           100%;
       }
@@ -1707,15 +1585,7 @@
 
       .menu-card {
         padding:
-          28px 18px;
-      }
-
-      .cta-ribbon {
-        width:
-          90%;
-
-        padding:
-          12px 18px;
+          30px 20px;
       }
     }
 
@@ -1725,25 +1595,25 @@
 
 <body>
 
-  <!-- =======================================================
+  <!-- =====================================
        TOP STRIP
-       ======================================================= -->
+  ====================================== -->
 
   <div class="top-strip">
     Good Food • Great Flavor • Made With Love
   </div>
 
 
-  <!-- =======================================================
+  <!-- =====================================
        NAVIGATION
-       ======================================================= -->
+  ====================================== -->
 
   <header>
 
     <div class="container nav">
 
       <a
-        href="#home"
+        href="index.html"
         class="small-brand"
       >
         Angela's Eats
@@ -1754,6 +1624,7 @@
         class="menu-toggle"
         id="menuToggle"
         aria-label="Open navigation menu"
+        aria-expanded="false"
       >
         ☰
       </button>
@@ -1762,6 +1633,7 @@
       <nav
         class="nav-links"
         id="navLinks"
+        aria-label="Main navigation"
       >
 
         <a href="#home">
@@ -1772,7 +1644,7 @@
           About
         </a>
 
-        <a href="#menu">
+        <a href="menu.html">
           Menu
         </a>
 
@@ -1795,11 +1667,11 @@
   </header>
 
 
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
-
   <main>
+
+    <!-- ===================================
+         HERO
+    ==================================== -->
 
     <section
       class="hero"
@@ -1849,15 +1721,21 @@
 
 
         <p class="hero-description">
-          Homemade favorites, satisfying meals and good food
-          prepared with care.
+
+          Homemade favorites, satisfying meals,
+          and good food prepared with care.
+
+          Angela's Eats brings people together
+          around comforting flavors, generous meals,
+          and food made with love.
+
         </p>
 
 
         <div class="hero-actions">
 
           <a
-            href="#menu"
+            href="menu.html"
             class="button button-red"
           >
             See The Menu
@@ -1878,9 +1756,9 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================
          ABOUT ANGELA'S EATS
-         ===================================================== -->
+    ==================================== -->
 
     <section
       class="story-section"
@@ -1893,9 +1771,7 @@
       <div class="container story-grid">
 
 
-        <!-- LEFT SIDE -->
-
-        <div class="story-block">
+        <div>
 
           <h2 class="section-heading">
 
@@ -1909,34 +1785,45 @@
 
 
           <p class="lead">
-            Angela's Eats is a small, local business built on
-            big flavors, homemade recipes, and a whole lot of love.
+
+            Angela's Eats is a small,
+            local food business built on
+            big flavors, homemade recipes,
+            and a whole lot of love.
+
           </p>
 
 
           <p class="story-copy">
-            From classic comfort food to crowd favorites,
-            everything is made with care and quality ingredients
-            you can taste.
+
+            From classic comfort food to
+            crowd favorites, everything is
+            prepared with care and quality
+            ingredients you can taste.
+
           </p>
 
 
           <p class="story-copy">
-            Whether it's a weekend event, a special gathering,
-            a potluck, or simply a craving for something delicious,
-            Angela's Eats is here to serve up food that feels like home.
+
+            Whether it's a weekend event,
+            a special gathering, a potluck,
+            or simply a craving for something
+            delicious, Angela's Eats is here
+            to serve food that feels like home.
+
           </p>
 
 
           <p class="story-note">
-            Good food brings people together—
+
+            Good food brings people together —
             that's what we're all about.
+
           </p>
 
         </div>
 
-
-        <!-- RIGHT SIDE VALUES -->
 
         <div class="values-list">
 
@@ -1954,8 +1841,11 @@
               </h3>
 
               <p>
-                Every dish is prepared with care and a passion
-                for bringing people together over good food.
+
+                Every dish is prepared with care
+                and a passion for bringing people
+                together over good food.
+
               </p>
 
             </div>
@@ -1976,8 +1866,10 @@
               </h3>
 
               <p>
-                Fresh, quality ingredients help bring out
-                the best flavor in every bite.
+
+                Quality ingredients help bring
+                out satisfying flavor in every meal.
+
               </p>
 
             </div>
@@ -1998,9 +1890,11 @@
               </h3>
 
               <p>
-                Perfect for events, parties, potlucks,
-                family gatherings, or whenever you want
-                a homemade meal made just right.
+
+                Great for weekend events,
+                parties, potlucks, family gatherings,
+                and special occasions.
+
               </p>
 
             </div>
@@ -2021,14 +1915,17 @@
               </h3>
 
               <p>
-                Your support means everything.
-                Angela's Eats appreciates every order,
-                every recommendation, and every customer.
+
+                Every order, recommendation,
+                and returning customer helps
+                support Angela's Eats.
+
               </p>
 
             </div>
 
           </article>
+
 
         </div>
 
@@ -2037,9 +1934,9 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================
          MEET ANGELA
-         ===================================================== -->
+    ==================================== -->
 
     <section class="bio-section">
 
@@ -2063,28 +1960,42 @@
 
 
           <p class="bio-copy">
-            Hi, I'm Angela! Cooking has always been my way of
-            showing love and bringing people together.
+
+            Hi, I'm Angela!
+
+            Cooking has always been my way
+            of showing love and bringing
+            people together.
+
           </p>
 
 
           <p class="bio-copy">
-            What started as cooking for family and friends
-            has grown into Angela's Eats—a business built on
-            passion, hard work, and a love for serving others.
+
+            What started as cooking for
+            family and friends has grown
+            into Angela's Eats — a business
+            built on passion, hard work,
+            and a love for serving others.
+
           </p>
 
 
           <p class="bio-copy">
-            My goal is to provide food that people enjoy,
-            meals that feel familiar, and service that makes
+
+            My goal is to provide food that
+            people enjoy, meals that feel
+            familiar, and service that makes
             every customer feel appreciated.
+
           </p>
 
 
           <p class="bio-thankyou">
+
             Thank you for supporting my dream
             and letting me be a part of your table!
+
           </p>
 
         </div>
@@ -2093,40 +2004,48 @@
         <div class="quote-panel">
 
           <blockquote>
+
             My goal is simple:
             make good food that
             makes people smile.
+
           </blockquote>
+
 
           <div class="quote-brush"></div>
 
         </div>
+
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         MENU PREVIEW
-         ===================================================== -->
+    <!-- ===================================
+         CURRENT MENU ROUTER
+    ==================================== -->
 
-    <section
-      class="menu-section"
-      id="menu"
-    >
+    <section class="menu-section">
 
       <div class="container">
+
 
         <div class="menu-heading">
 
           <h2>
-            Current Special
+            What's Angela Cooking?
           </h2>
 
           <p>
-            Angela's Eats menu can change based on the event.
-            Contact Angela for availability and pre-orders.
+
+            Angela's menu changes with each cook,
+            weekend special, and event.
+
+            The dedicated menu page always shows
+            the current meal, sides, extras,
+            pricing, and ordering information.
+
           </p>
 
         </div>
@@ -2134,86 +2053,109 @@
 
         <div class="menu-card">
 
-          <div class="menu-price">
-            $20.00
-          </div>
-
-
           <h3>
-            Fried Fish Meal
+            See This Weekend's Menu
           </h3>
 
 
           <p>
-            Three (3) Fried Fish Fillets
+
+            Check out what's being served now,
+            including the current featured meal,
+            included sides, available extras,
+            prices, and pre-order details.
+
           </p>
 
 
-          <p>
-            Mullet • Trout • Basa
-          </p>
+          <a
+            href="menu.html"
+            class="button button-red"
+          >
+            View Current Menu
+          </a>
 
 
-          <p>
-            Baked Beans
-          </p>
-
-
-          <p>
-            Potato Salad
-          </p>
-
-
-          <span class="included">
-            Included in meal price
-          </span>
+          <div class="menu-note">
+            Menu offerings may change from one cook or event to the next.
+          </div>
 
         </div>
+
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         CONTACT CTA
-         ===================================================== -->
+    <!-- ===================================
+         CONTACT
+    ==================================== -->
 
     <section
-      class="bottom-art"
+      class="contact-section"
       id="contact"
     >
 
-      <div class="wave-orange"></div>
-      <div class="wave-gold"></div>
-      <div class="wave-teal"></div>
-      <div class="wave-navy"></div>
+      <div class="contact-inner">
 
 
-      <div class="cta-wrap">
-
-        <div class="cta-ribbon">
+        <h2>
           Ready to place an order?
+        </h2>
+
+
+        <p>
+
+          Contact Angela for current availability,
+          pre-orders, event information,
+          or questions about the menu.
+
+        </p>
+
+
+        <div class="contact-actions">
+
+
+          <a
+            class="contact-action primary"
+            href="tel:+18504176796"
+          >
+            Call (850) 417-6796
+          </a>
+
+
+          <a
+            class="contact-action"
+            href="sms:+18504176796"
+          >
+            Text Angela
+          </a>
+
+
+          <a
+            class="contact-action"
+            href="mailto:angelaeats2@gmail.com?subject=Angela%27s%20Eats%20Order%20Inquiry"
+          >
+            Email Angela
+          </a>
+
+
         </div>
-
-
-        <a
-          href="tel:+18504176796"
-          class="cta-button"
-        >
-          Call Angela
-        </a>
 
       </div>
 
     </section>
+
+
+    <div class="bottom-art"></div>
 
   </main>
 
 
-  <!-- =======================================================
+  <!-- =====================================
        FOOTER
-       ======================================================= -->
+  ====================================== -->
 
   <footer>
 
@@ -2221,28 +2163,35 @@
       Angela's Eats
     </strong>
 
+
     Phone:
+
     <a href="tel:+18504176796">
       (850) 417-6796
     </a>
 
+
     <br>
 
+
     Email:
+
     <a href="mailto:angelaeats2@gmail.com">
       angelaeats2@gmail.com
     </a>
 
+
     <br><br>
+
 
     Good Food • Great Flavor • Made With Love
 
   </footer>
 
 
-  <!-- =======================================================
+  <!-- =====================================
        MOBILE NAVIGATION
-       ======================================================= -->
+  ====================================== -->
 
   <script>
 
@@ -2257,7 +2206,13 @@
       "click",
       function () {
 
-        navLinks.classList.toggle("active");
+        const isOpen =
+          navLinks.classList.toggle("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
 
       }
     );
@@ -2272,7 +2227,14 @@
             "click",
             function () {
 
-              navLinks.classList.remove("active");
+              navLinks
+                .classList
+                .remove("active");
+
+              menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+              );
 
             }
           );
@@ -2281,6 +2243,7 @@
       );
 
   </script>
+
 
 </body>
 </html> 
