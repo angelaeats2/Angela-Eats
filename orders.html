@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#082f50">
+<meta name="robots" content="noindex,nofollow">
+<title>Order Dashboard | Angela's Eats</title>
+
+<style>
+:root{
+  --navy:#082f50;
+  --navy-dark:#041f36;
+  --blue:#0b5f9b;
+  --red:#c92b22;
+  --orange:#ef651d;
+  --gold:#f5ad16;
+  --cream:#f7e7bd;
+  --cream-light:#fff7df;
+  --white:#fff;
+  --ink:#102d45;
+  --muted:#627384;
+  --green:#237a48;
+  --shadow:0 16px 34px rgba(8,47,80,.16);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--cream-light),var(--cream));
+  min-height:100vh;
+}
+
+button,input,select,textarea{font:inherit}
+
+.shell{
+  width:min(1180px,94%);
+  margin:auto;
+}
+
+.topbar{
+  background:var(--navy-dark);
+  color:#fff;
+}
+
+.topbar .shell{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-weight:900;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  color:var(--gold);
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.top-actions button,
+.top-actions a{
+  border:0;
+  border-radius:999px;
+  padding:10px 16px;
+  background:#fff;
+  color:var(--navy);
+  font-weight:900;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+main{padding:38px 0 70px}
+
+.login-card{
+  width:min(520px,100%);
+  margin:60px auto;
+  background:#fff;
+  border:4px solid var(--navy);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:30px;
+}
+
+.login-card h1{
+  margin:0 0 8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  color:var(--navy);
+  font-size:2.4rem;
+}
+
+.login-card p{
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin-top:15px;
+}
+
+.field label{font-weight:900}
+
+.field input,
+.field textarea{
+  width:100%;
+  border:2px solid rgba(8,47,80,.18);
+  border-radius:12px;
+  padding:13px 14px;
+}
+
+.primary{
+  width:100%;
+  margin-top:18px;
+  border:0;
+  border-radius:12px;
+  padding:14px 18px;
+  background:var(--red);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.message{
+  display:none;
+  margin-top:14px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:#fff0ef;
+  border:2px solid var(--red);
+  color:#7b1711;
+  font-weight:800;
+}
+
+.message.show{display:block}
+
+.dashboard{display:none}
+.dashboard.active{display:block}
+
+.dashboard-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px;
+}
+
+.dashboard-head h1{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  color:var(--navy);
+}
+
+.dashboard-head p{
+  margin:7px 0 0;
+  color:var(--muted);
+}
+
+.refresh{
+  border:0;
+  border-radius:999px;
+  padding:11px 18px;
+  background:var(--navy);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.stat{
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  border:2px solid rgba(8,47,80,.10);
+  box-shadow:0 8px 18px rgba(8,47,80,.08);
+}
+
+.stat span{
+  display:block;
+  color:var(--muted);
+  font-weight:800;
+  font-size:.9rem;
+}
+
+.stat strong{
+  display:block;
+  margin-top:4px;
+  font-size:2rem;
+  color:var(--navy);
+}
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.filters button{
+  border:2px solid var(--navy);
+  background:#fff;
+  color:var(--navy);
+  border-radius:999px;
+  padding:9px 14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.filters button.active{
+  background:var(--navy);
+  color:#fff;
+}
+
+.orders{
+  display:grid;
+  gap:16px;
+}
+
+.order-card{
+  background:#fff;
+  border:3px solid var(--navy);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.order-card-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:14px;
+  padding:18px 20px;
+  background:#f8fbfd;
+  border-bottom:1px solid rgba(8,47,80,.12);
+}
+
+.order-number{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.55rem;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.order-time{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.total{
+  color:var(--red);
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:900;
+  font-size:2rem;
+}
+
+.order-body{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+  gap:24px;
+  padding:20px;
+}
+
+.customer h3,
+.items h3,
+.ops h3{
+  margin:0 0 10px;
+  color:var(--navy);
+}
+
+.customer p{
+  margin:5px 0;
+  line-height:1.45;
+}
+
+.customer a{
+  color:var(--blue);
+  font-weight:900;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:9px 0;
+  border-bottom:1px dashed rgba(8,47,80,.18);
+}
+
+.item:last-child{border-bottom:0}
+
+.item-name{font-weight:900}
+
+.item-options{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+.ops{
+  padding:17px;
+  background:var(--cream-light);
+  border-radius:16px;
+}
+
+.ops select,
+.ops textarea{
+  width:100%;
+  border:2px solid rgba(8,47,80,.18);
+  border-radius:10px;
+  padding:11px;
+  background:#fff;
+}
+
+.ops textarea{
+  min-height:88px;
+  resize:vertical;
+  margin-top:10px;
+}
+
+.ops button{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  border-radius:10px;
+  padding:11px;
+  font-weight:900;
+  cursor:pointer;
+  background:var(--navy);
+  color:#fff;
+}
+
+.contact-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.contact-row a{
+  padding:9px 12px;
+  border-radius:999px;
+  background:var(--navy);
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  font-size:.9rem;
+}
+
+.empty{
+  padding:34px;
+  text-align:center;
+  background:#fff;
+  border:2px dashed rgba(8,47,80,.25);
+  border-radius:18px;
+  color:var(--muted);
+}
+
+.status-pill{
+  display:inline-block;
+  margin-top:9px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:.82rem;
+  background:#e7eef5;
+  color:var(--navy);
+}
+
+.status-pill[data-status="NEW"]{background:#fff2c8;color:#775400}
+.status-pill[data-status="CONFIRMED"]{background:#e5f1ff;color:#0b4e83}
+.status-pill[data-status="PREPARING"]{background:#fff0dc;color:#8a4800}
+.status-pill[data-status="READY"]{background:#e7f7ed;color:#1d6339}
+.status-pill[data-status="COMPLETED"]{background:#e6e8eb;color:#404b56}
+.status-pill[data-status="CANCELLED"]{background:#ffe8e6;color:#8a1710}
+
+@media(max-width:820px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .order-body{grid-template-columns:1fr}
+}
+
+@media(max-width:520px){
+  .stats{grid-template-columns:1fr 1fr}
+  .top-actions a{display:none}
+  .order-card-head{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="shell">
+    <div class="brand">Angela's Eats — Orders</div>
+    <div class="top-actions">
+      <a href="menu.html">View Menu</a>
+      <button id="logoutButton" type="button" hidden>Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+
+  <section class="login-card" id="loginCard">
+    <h1>Private Order Dashboard</h1>
+    <p>
+      Sign in with the Angela's Eats administrator account.
+      Customer orders are not publicly visible.
+    </p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" type="email" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button class="primary" type="submit">Sign In</button>
+      <div class="message" id="loginMessage"></div>
+    </form>
+  </section>
+
+  <section class="dashboard" id="dashboard">
+    <div class="dashboard-head">
+      <div>
+        <h1>Order Inbox</h1>
+        <p id="dashboardSubtitle">Loading Angela's Eats orders…</p>
+      </div>
+      <button class="refresh" id="refreshButton" type="button">Refresh Orders</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span>New</span><strong id="statNew">0</strong></div>
+      <div class="stat"><span>Confirmed</span><strong id="statConfirmed">0</strong></div>
+      <div class="stat"><span>Preparing / Ready</span><strong id="statActive">0</strong></div>
+      <div class="stat"><span>Completed</span><strong id="statCompleted">0</strong></div>
+    </div>
+
+    <div class="filters" id="filters">
+      <button type="button" class="active" data-filter="ALL">All</button>
+      <button type="button" data-filter="NEW">New</button>
+      <button type="button" data-filter="CONFIRMED">Confirmed</button>
+      <button type="button" data-filter="PREPARING">Preparing</button>
+      <button type="button" data-filter="READY">Ready</button>
+      <button type="button" data-filter="COMPLETED">Completed</button>
+      <button type="button" data-filter="CANCELLED">Cancelled</button>
+    </div>
+
+    <div class="orders" id="orders"></div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="ae-config.js"></script>
+
+<script>
+(() => {
+  const config = window.ANGELAS_EATS_CONFIG || {};
+  const loginCard = document.getElementById("loginCard");
+  const dashboard = document.getElementById("dashboard");
+  const loginForm = document.getElementById("loginForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const logoutButton = document.getElementById("logoutButton");
+  const refreshButton = document.getElementById("refreshButton");
+  const ordersEl = document.getElementById("orders");
+  const subtitle = document.getElementById("dashboardSubtitle");
+
+  let client = null;
+  let orders = [];
+  let currentFilter = "ALL";
+  let realtimeChannel = null;
+
+  const money = value => new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
+  }).format(Number(value || 0));
+
+  const dateTime = iso => new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(new Date(iso));
+
+  const esc = value => String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+  function showLoginMessage(message) {
+    loginMessage.textContent = message;
+    loginMessage.classList.add("show");
+  }
+
+  function hideLoginMessage() {
+    loginMessage.classList.remove("show");
+  }
+
+  function configured() {
+    return config.supabaseUrl &&
+      config.supabaseAnonKey &&
+      !config.supabaseUrl.includes("YOUR_PROJECT_ID") &&
+      !config.supabaseAnonKey.includes("YOUR_SUPABASE_ANON_KEY");
+  }
+
+  function setLoggedIn(value) {
+    loginCard.style.display = value ? "none" : "block";
+    dashboard.classList.toggle("active", value);
+    logoutButton.hidden = !value;
+  }
+
+  async function isAuthorizedAdmin() {
+    const { data: userData } = await client.auth.getUser();
+    const user = userData?.user;
+    if (!user) return false;
+
+    const { data, error } = await client
+      .from("ae_admins")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    return !error && !!data;
+  }
+
+  function updateStats() {
+    const count = status => orders.filter(o => o.status === status).length;
+    document.getElementById("statNew").textContent = count("NEW");
+    document.getElementById("statConfirmed").textContent = count("CONFIRMED");
+    document.getElementById("statActive").textContent = count("PREPARING") + count("READY");
+    document.getElementById("statCompleted").textContent = count("COMPLETED");
+  }
+
+  function contactButtons(order) {
+    const parts = [];
+
+    if (order.phone) {
+      const smsBody = encodeURIComponent(
+        `Hi ${order.customer_name}, this is Angela's Eats regarding order AE-${String(order.order_number).padStart(6,"0")}.`
+      );
+      parts.push(
+        `<a href="tel:${esc(order.phone)}">Call</a>` +
+        `<a href="sms:${esc(order.phone)}?body=${smsBody}">Text</a>`
+      );
+    }
+
+    if (order.email) {
+      const subject = encodeURIComponent(
+        `Angela's Eats Order AE-${String(order.order_number).padStart(6,"0")}`
+      );
+      parts.push(
+        `<a href="mailto:${esc(order.email)}?subject=${subject}">Email</a>`
+      );
+    }
+
+    return parts.join("");
+  }
+
+  function itemMarkup(item) {
+    const sides = item.options?.sides;
+    const optionText = Array.isArray(sides) && sides.length
+      ? `<span class="item-options">Sides: ${sides.map(esc).join(", ")}</span>`
+      : "";
+
+    return `
+      <div class="item">
+        <div>
+          <span class="item-name">${esc(item.item_name)} × ${item.quantity}</span>
+          ${optionText}
+        </div>
+        <strong>${money(item.line_total)}</strong>
+      </div>
+    `;
+  }
+
+  function renderOrders() {
+    updateStats();
+
+    const visible = currentFilter === "ALL"
+      ? orders
+      : orders.filter(o => o.status === currentFilter);
+
+    subtitle.textContent = `${orders.length} total order${orders.length === 1 ? "" : "s"} in the system.`;
+
+    if (!visible.length) {
+      ordersEl.innerHTML = `<div class="empty">No orders in this view.</div>`;
+      return;
+    }
+
+    ordersEl.innerHTML = visible.map(order => {
+      const orderNo = `AE-${String(order.order_number).padStart(6,"0")}`;
+      const items = (order.ae_order_items || []).map(itemMarkup).join("");
+
+      return `
+        <article class="order-card" data-order-id="${order.id}">
+          <div class="order-card-head">
+            <div>
+              <div class="order-number">${orderNo}</div>
+              <div class="order-time">
+                Received ${dateTime(order.created_at)} · Pickup ${dateTime(order.pickup_at)}
+              </div>
+              <span class="status-pill" data-status="${esc(order.status)}">${esc(order.status)}</span>
+            </div>
+            <div class="total">${money(order.total)}</div>
+          </div>
+
+          <div class="order-body">
+            <div>
+              <section class="customer">
+                <h3>Customer</h3>
+                <p><strong>${esc(order.customer_name)}</strong></p>
+                ${order.phone ? `<p>Phone: <a href="tel:${esc(order.phone)}">${esc(order.phone)}</a></p>` : ""}
+                ${order.email ? `<p>Email: <a href="mailto:${esc(order.email)}">${esc(order.email)}</a></p>` : ""}
+                ${order.customer_notes ? `<p><strong>Customer notes:</strong> ${esc(order.customer_notes)}</p>` : ""}
+                <div class="contact-row">${contactButtons(order)}</div>
+              </section>
+
+              <section class="items" style="margin-top:20px">
+                <h3>Items</h3>
+                ${items || "<p>No items found.</p>"}
+              </section>
+            </div>
+
+            <section class="ops">
+              <h3>Order Status</h3>
+
+              <select class="status-select" aria-label="Order status">
+                ${["NEW","CONFIRMED","PREPARING","READY","COMPLETED","CANCELLED"]
+                  .map(status => `<option value="${status}" ${status === order.status ? "selected" : ""}>${status}</option>`)
+                  .join("")}
+              </select>
+
+              <textarea class="internal-notes" placeholder="Private kitchen / order notes">${esc(order.internal_notes || "")}</textarea>
+
+              <button class="save-order" type="button">Save Changes</button>
+            </section>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    document.querySelectorAll(".save-order").forEach(button => {
+      button.addEventListener("click", saveOrderCard);
+    });
+  }
+
+  async function saveOrderCard(event) {
+    const button = event.currentTarget;
+    const card = button.closest(".order-card");
+    const id = card.dataset.orderId;
+    const status = card.querySelector(".status-select").value;
+    const internalNotes = card.querySelector(".internal-notes").value.trim();
+
+    button.disabled = true;
+    button.textContent = "Saving...";
+
+    const { error } = await client
+      .from("ae_orders")
+      .update({
+        status,
+        internal_notes: internalNotes || null
+      })
+      .eq("id", id);
+
+    if (error) {
+      alert(error.message);
+    } else {
+      await loadOrders();
+    }
+
+    button.disabled = false;
+    button.textContent = "Save Changes";
+  }
+
+  async function loadOrders() {
+    ordersEl.innerHTML = `<div class="empty">Loading orders…</div>`;
+
+    const { data, error } = await client
+      .from("ae_orders")
+      .select(`
+        id,
+        order_number,
+        created_at,
+        customer_name,
+        phone,
+        email,
+        pickup_at,
+        status,
+        total,
+        customer_notes,
+        internal_notes,
+        ae_order_items (
+          id,
+          menu_code,
+          item_name,
+          unit_price,
+          quantity,
+          options,
+          line_total
+        )
+      `)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      ordersEl.innerHTML = `<div class="empty">${esc(error.message)}</div>`;
+      return;
+    }
+
+    orders = data || [];
+    renderOrders();
+  }
+
+  async function openDashboard() {
+    const authorized = await isAuthorizedAdmin();
+
+    if (!authorized) {
+      await client.auth.signOut();
+      setLoggedIn(false);
+      showLoginMessage("This account is not authorized for the Angela's Eats order dashboard.");
+      return;
+    }
+
+    hideLoginMessage();
+    setLoggedIn(true);
+    await loadOrders();
+
+    if (realtimeChannel) {
+      await client.removeChannel(realtimeChannel);
+    }
+
+    realtimeChannel = client
+      .channel("ae-orders-live")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "ae_orders" },
+        () => loadOrders()
+      )
+      .subscribe();
+  }
+
+  async function boot() {
+    if (!configured()) {
+      showLoginMessage(
+        "Dashboard setup is not complete. Add the Supabase URL and anon key to ae-config.js."
+      );
+      return;
+    }
+
+    client = window.supabase.createClient(
+      config.supabaseUrl,
+      config.supabaseAnonKey
+    );
+
+    const { data } = await client.auth.getSession();
+
+    if (data?.session) {
+      await openDashboard();
+    } else {
+      setLoggedIn(false);
+    }
+  }
+
+  loginForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    if (!configured()) {
+      showLoginMessage("Add the Supabase URL and anon key to ae-config.js first.");
+      return;
+    }
+
+    hideLoginMessage();
+
+    if (!client) {
+      client = window.supabase.createClient(
+        config.supabaseUrl,
+        config.supabaseAnonKey
+      );
+    }
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const { error } = await client.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      showLoginMessage(error.message);
+      return;
+    }
+
+    await openDashboard();
+  });
+
+  logoutButton.addEventListener("click", async () => {
+    if (realtimeChannel) {
+      await client.removeChannel(realtimeChannel);
+      realtimeChannel = null;
+    }
+
+    await client.auth.signOut();
+    setLoggedIn(false);
+  });
+
+  refreshButton.addEventListener("click", loadOrders);
+
+  document.getElementById("filters").addEventListener("click", event => {
+    const button = event.target.closest("button[data-filter]");
+    if (!button) return;
+
+    currentFilter = button.dataset.filter;
+
+    document.querySelectorAll("#filters button").forEach(b => {
+      b.classList.toggle("active", b === button);
+    });
+
+    renderOrders();
+  });
+
+  boot();
+})();
+</script>
+
+</body>
+</html>
+
+ 
